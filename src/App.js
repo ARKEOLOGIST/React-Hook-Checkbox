@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import Checkbox from './components/checkbox';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
 
+  changeState = (arr,id) => 
+  {
+    arr = arr.map(item => {
+      if (item.id === id)
+      {
+        item.checked = !item.checked;
+      }
+      return item;
+    });
+   console.log(arr);
+  }
+
+  render()
+  {
+    const arr = ["1","2","good","bad"];
+    return (
+      <div className="App">
+        <Checkbox arr={arr} changeState={this.changeState}/>
+      </div>
+    );
+  }  
+  }
+  
 export default App;
